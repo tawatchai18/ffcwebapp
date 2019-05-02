@@ -25,7 +25,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      itdata: '',
+      // itdata: '',
       name: '',
       items: [],
       isLoaded: false,
@@ -34,9 +34,11 @@ class Home extends Component {
     };
     this.onChange = this.onChange.bind(this);
     this.logout = this.logout.bind(this);
+    this.setStore = this.setStore.bind(this)
   }
   componentDidMount() {
     const data = sessionStorage.getItem('userData')
+    console.log(sessionStorage.getItem('userData'),'llllllllll');
     const dataJson = JSON.parse(data)
     const id = dataJson.user.orgId
     CreatData(id)
@@ -67,7 +69,9 @@ class Home extends Component {
   }
 
   setStore = (user) => {
-    localStorage.setItem('userUnit', JSON.stringify(user))
+    localStorage.setItem('userUnit',JSON.stringify(user))
+    // sessionStorage.getItem('userData',JSON.stringify(userData))
+    
   }
 
   render() {
@@ -80,20 +84,25 @@ class Home extends Component {
       {
         title: 'Action', dataIndex: 'id', key: 'id', render: (id, user) => <a href={`/user?id=${id}`} onClick={() => this.setStore(user)}>view</a>
       },
+      
+      // {
+      //   title: 'Action', dataIndex: 'id', key: 'id', render: (id, creat) => <a href={`/creat?id=${id}`} onClick={() => this.setStore(creat)}>add</a>
+      // }
     ];
     const data = this.state.items
     const da = sessionStorage.getItem('userData')
     const dataJson = JSON.parse(da)
     const name = dataJson.user.name
-    
+    const id = dataJson.user.orgId
+    console.log('da', da)
     return (
       <Layout>
-        <Header style={{ background: '#fff', height: 80 }}>
-          Family Folder Collector | (FFC)
-         <a href="/login" onClick={this.logout} className="logout">Logout</a>
+        <Header style={{ backgroundColor: '#79bd96', height: 100}}>
+        <img style={{height:80, width:100}} src="LOGO_White.png"></img>
+         <a href="/login" onClick={this.logout} className="logout">ออกจากระบบ</a>
         </Header>
         <Layout style={{ marginTop: 3 }}>
-          <Sider style={{ background: '#fff' }}>
+          <Sider style={{ background: '#fff'}}>
             <div className="logo" />
             <Menu mode="inline" >
               <Menu.Item key="1">
@@ -106,10 +115,10 @@ class Home extends Component {
                 <span>แผนที่</span>
                 <Link to="/map">แผนที่</Link>
               </Menu.Item>
-              <Menu.Item key="3">
+              {/* <Menu.Item key="3">
                 <Icon type="bar-chart" />
                 <span>สถิติการใช้งาน</span>
-              </Menu.Item>
+              </Menu.Item> */}
               <Menu.Item key="4">
                 <Icon type="bar-chart" />
                 <span>รายงาน</span>
@@ -120,21 +129,24 @@ class Home extends Component {
           <Content style={{ margin: '0 16px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
             </Breadcrumb>
-            <div style={{ padding: 24, background: '#fff', minHeight: 800 }}>
+            <div style={{ padding: 24, background: '#fff', minHeight: 800}}>
               <div>
                 {name}
+                {/* <Button href={`/creat?id=${id}`} type="primary" style={{ marginBottom: 16, marginLeft:850 }}> */}
                 <Button href="/creat" type="primary" style={{ marginBottom: 16, marginLeft:850 }}>
                   + เพิ่มสมาชิก
                 </Button>
               </div>
-              <Table
-                columns={columns} dataSource={data} />
+              <Table columns={columns} dataSource={data} />
             </div>
           </Content>
         </Layout>
-        <Footer style={{ textAlign: 'center' }}>
-          Nectec ©2019  โดย ศูนย์เทคโนโลยีอิเล็กทรอนิกส์และคอมพิวเตอร์แห่งชาติ
-        </Footer>
+        <Footer style={{ backgroundColor: '#202020' }}>
+            <center>
+              <img style={{ height: 40, width: 100 }} src="nstda.png"></img>
+              <p style={{ fontSize: 16, color: '#fff', marginTop:10 }}>สงวนลิขสิทธิ์ ตาม พ.ร.บ.ลิขสิทธิ์ พ.ศ. 2537 โดย ศูนย์เทคโนโลยีอิเล็กทรอนิกส์และคอมพิวเตอร์แห่งชาติ</p>
+            </center>
+          </Footer>
       </Layout>
     );
   }

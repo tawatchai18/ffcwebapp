@@ -18,7 +18,6 @@ class User extends Component {
     };
     this.onChange = this.onChange.bind(this);
     this.logout = this.logout.bind(this);
-    console.log(this.state.items, 'jgholjksmlkdgh');
 
   }
 
@@ -29,6 +28,8 @@ class User extends Component {
 
   getUrl = () => {
     const user = localStorage.getItem('userUnit')
+    console.log(localStorage.getItem('userUnit'),'ppppp');
+    
     return JSON.parse(user)
   }
 
@@ -47,13 +48,11 @@ class User extends Component {
       return (<Redirect to={'/login'} />)
     }
 
-    const data = this.state.items
-    console.log(data);
     return (
       <Layout>
-        <Header style={{ background: '#fff', height: 80 }}>
-          Family Folder Collector | (FFC)
-         <a href="/login" onClick={this.logout} className="logout">Logout</a>
+       <Header style={{ backgroundColor: '#79bd96', height: 100}}>
+        <img style={{height:80, width:100}} src="LOGO_White.png"></img>
+         <a href="/login" onClick={this.logout} className="logout">ออกจากระบบ</a>
         </Header>
         <Layout style={{ marginTop: 3 }}>
           <Sider style={{ background: '#fff' }}>
@@ -90,12 +89,17 @@ class User extends Component {
                     <Card title="ข้อมูลส่วนบุคคล" bordered={false}>
                       <p>name : {this.getUrl().name}</p>
                       <p>ORG : {this.getUrl().role}</p>
+                      <p>ที่อยู่ : บ้านเลขที่ 1/4 ตำบลอี่หล่ำ อำเภออุทุมพรพิสัย จังหวัดศรีสะเกษ 33120</p>
+                      <p>ตำแหน่ง : เจ้าหน้าที่สาธารณสุข </p>
+                      <p>จบการศึกษา : ปริญญาตรี วิทยาศาสตร์การกีฬา มหาวิทยาลัยจุฬาลงกรณ์</p>
+                      <p>สังกัด อุบลราชธานี</p>
+                      <p></p>
                     </Card>
                   </Col>
                   <Col span={8}>
                     <Card
                       hoverable
-                      style={{ width: 240 }}
+                      style={{ width: 200, height: 50 }}
                       cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
                     >
                     </Card>
@@ -105,9 +109,15 @@ class User extends Component {
             </div>
           </Content>
         </Layout>
-        <Footer style={{ textAlign: 'center' }}>
+        {/* <Footer style={{ textAlign: 'center' }}>
           Ant Design ©2018 Created by  Nectec
-        </Footer>
+        </Footer> */}
+         <Footer style={{ backgroundColor: '#202020' }}>
+            <center>
+              <img style={{ height: 40, width: 100 }} src="nstda.png"></img>
+              <p style={{ fontSize: 16, color: '#fff', marginTop:10 }}>สงวนลิขสิทธิ์ ตาม พ.ร.บ.ลิขสิทธิ์ พ.ศ. 2537 โดย ศูนย์เทคโนโลยีอิเล็กทรอนิกส์และคอมพิวเตอร์แห่งชาติ</p>
+            </center>
+          </Footer>
       </Layout>
     );
   }

@@ -19,7 +19,7 @@ export function PostData(type, userData, id) {
         resolve(res);
       })
       .catch((error) => {
-        reject(error);
+        reject('Username or password is incorrect');
       });
 
   });
@@ -54,16 +54,15 @@ export function Data() {
 
   });
 }
-
+//show user หน้า users
 export function CreatData(id) {
-  console.log(id, 'createDate')
   return new Promise((resolve, reject) => {
     // fetch( API + `/org/5c875ec69522b200046a40fb/user`, {
     fetch(API + `/org/${id}/user`, {
       method: 'GET',
       headers: new Headers({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer rCHUiQSGQNAz0iCog4WXz',
+        'Authorization': 'Bearer vOUqqnkjC8MhmIz3pZZji',      
       }),
     })
       .then((response) => response.json())
@@ -75,4 +74,71 @@ export function CreatData(id) {
       });
   });
 }
+// เรียก user ทั้งหมดดู
+export function GetUser(id, userData) {
+  return new Promise((resolve, reject) => {
+    fetch(API + `/org/${id}/user`, {
+      method: 'GET',
+      headers: new Headers({
+        "Content-Type": "application/json",
+        "Authorization": " Bearer vOUqqnkjC8MhmIz3pZZji",
+      }),
+      body: JSON.stringify(userData),
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+}
+//สมัคร user ใหม่
+export function CreatUser(id, userData) {
+  console.log(id,'opopopop');
+  return new Promise((resolve, reject) => {
+    // fetch(API + `/org/5c93568a8b7b100004ef921d/user`, {
+    fetch(API + `/org/${id}/user`, {
+      method: 'POST',
+      headers: new Headers({
+        "Content-Type": "application/json",
+        "Authorization": "Bearer PkyHLDX6Y3A3kvtcUBo9W",
+      }),
+      body: JSON.stringify(userData),
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+}
 
+// export function CreatUser(id, userData) {
+//   var access_token = 'WXMUTd3F8Qz0kQhLx8q5Y';
+//   // var requestHeaders = {
+//   //   'Authorization': 'Bearer ' + token,
+//   //   'Content-Type': 'application/json',
+//   // };
+//   return new Promise((resolve, reject) => {
+//     fetch(API + `/org/5c93568a8b7b100004ef921d/user`, {
+//       method: 'POST',
+//       body: JSON.stringify(userData),
+//       // headers: requestHeaders,
+//       headers: new Headers({
+//         'Content-Type': 'application/json',
+//         'Authorization': access_token,
+//       }),
+//     })
+//       .then((response) => response.json())
+//       .then((res) => {
+//         resolve(res);
+//       })
+//       .catch((error) => {
+//         reject(error);
+//       });
+//   });
+// }

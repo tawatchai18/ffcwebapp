@@ -1,39 +1,39 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 // import './map.css';
 import 'antd/dist/antd.css';
-import { Layout, Menu, Breadcrumb, Icon, Table, Button, Popconfirm } from 'antd';
-import { Line, Pie } from 'react-chartjs-2';
+import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Pie, Line } from 'react-chartjs-2';
 
 const { Header, Content, Footer, Sider, } = Layout;
 const SubMenu = Menu.SubMenu;
 
-// const data = {
-//     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-//     datasets: [
-//         {
-//             label: 'My First dataset',
-//             fill: false,
-//             lineTension: 0.1,
-//             backgroundColor: 'rgba(75,192,192,0.4)',
-//             borderColor: 'rgba(75,192,192,1)',
-//             borderCapStyle: 'butt',
-//             borderDash: [],
-//             borderDashOffset: 0.0,
-//             borderJoinStyle: 'miter',
-//             pointBorderColor: 'rgba(75,192,192,1)',
-//             pointBackgroundColor: '#fff',
-//             pointBorderWidth: 1,
-//             pointHoverRadius: 5,
-//             pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-//             pointHoverBorderColor: 'rgba(220,220,220,1)',
-//             pointHoverBorderWidth: 2,
-//             pointRadius: 1,
-//             pointHitRadius: 10,
-//             data: [65, 59, 80, 81, 56, 55, 40]
-//         }
-//     ]
-// };
+const data = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    datasets: [
+        {
+            label: 'My First dataset',
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: 'rgba(75,192,192,0.4)',
+            borderColor: 'rgba(75,192,192,1)',
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: 'rgba(75,192,192,1)',
+            pointBackgroundColor: '#fff',
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+            pointHoverBorderColor: 'rgba(220,220,220,1)',
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: [65, 59, 80, 81, 56, 55, 40]
+        }
+    ]
+};
 
 const da = {
     labels: [
@@ -84,9 +84,9 @@ class Map extends Component {
     render() {
         return (
             <Layout>
-                <Header style={{ background: '#fff', height: 80 }}>
-                    Family Folder Collector | (FFC)
-         <a href="/login" onClick={this.logout} className="logout">Logout</a>
+                <Header style={{ backgroundColor: '#79bd96', height: 100 }}>
+                    <img style={{ height: 80, width: 100 }} src="LOGO_White.png"></img>
+                    <a href="/login" onClick={this.logout} className="logout">ออกจากระบบ</a>
                 </Header>
                 <Layout style={{ marginTop: 3 }}>
                     <Sider style={{ background: '#fff' }} >
@@ -102,10 +102,10 @@ class Map extends Component {
                                 <span>แผนที่</span>
                                 <Link to="/map">แผนที่</Link>
                             </Menu.Item>
-                            <Menu.Item key="3">
+                            {/* <Menu.Item key="3">
                                 <Icon type="bar-chart" />
                                 <span>สถิติการใช้งาน</span>
-                            </Menu.Item>
+                            </Menu.Item> */}
                             <Menu.Item key="4">
                                 <Icon type="bar-chart" />
                                 <span>รายงาน</span>
@@ -117,14 +117,17 @@ class Map extends Component {
                         <Breadcrumb style={{ margin: '16px 0' }}>
                         </Breadcrumb>
                         <div style={{ padding: 24, background: '#fff', minHeight: 800 }}>
-                            {/* <Line data={data} /> */}
+                            <Line data={data} />
                             <Pie data={da} />
                         </div>
                     </Content>
                 </Layout>
-                <Footer style={{ textAlign: 'center' }}>
-                    Ant Design ©2018 Created by Ant UED
-        </Footer>
+                <Footer style={{ backgroundColor: '#202020' }}>
+                    <center>
+                        <img style={{ height: 40, width: 100 }} src="nstda.png"></img>
+                        <p style={{ fontSize: 16, color: '#fff', marginTop: 10 }}>สงวนลิขสิทธิ์ ตาม พ.ร.บ.ลิขสิทธิ์ พ.ศ. 2537 โดย ศูนย์เทคโนโลยีอิเล็กทรอนิกส์และคอมพิวเตอร์แห่งชาติ</p>
+                    </center>
+                </Footer>
             </Layout>
         );
     }
