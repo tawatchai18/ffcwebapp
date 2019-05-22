@@ -277,7 +277,7 @@ class Signup extends Component {
                                 <ModalHeader toggle={this.toggle}></ModalHeader>
                                 <ModalBody>
                                     You are sure cancel?
-                            </ModalBody>
+                                </ModalBody>
                                 <ModalFooter>
                                     <Button color="primary" href="/login">ok</Button>{' '}
                                     <Button color="secondary" onClick={this.toggle}>Cancel</Button>

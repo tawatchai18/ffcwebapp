@@ -62,7 +62,7 @@ export function CreatData(id) {
       method: 'GET',
       headers: new Headers({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer vOUqqnkjC8MhmIz3pZZji',      
+        'Authorization': 'Bearer rJwQX3q0hhkIJvMnTssfMN4e3i0xEtkmON8G7G35w0AFDyGZ4OGpoEb5h7v9fKJE',      
       }),
     })
       .then((response) => response.json())
@@ -81,7 +81,7 @@ export function GetUser(id, userData) {
       method: 'GET',
       headers: new Headers({
         "Content-Type": "application/json",
-        "Authorization": " Bearer vOUqqnkjC8MhmIz3pZZji",
+        "Authorization": " Bearer rJwQX3q0hhkIJvMnTssfMN4e3i0xEtkmON8G7G35w0AFDyGZ4OGpoEb5h7v9fKJE",
       }),
       body: JSON.stringify(userData),
     })

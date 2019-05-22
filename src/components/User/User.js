@@ -7,7 +7,6 @@ import { Layout, Menu, Breadcrumb, Icon, Card, Col, Row, Input } from 'antd';
 import '../../styles/react-confirm-alert.css';
 
 const { Header, Content, Footer, Sider, } = Layout;
-const SubMenu = Menu.SubMenu;
 
 class User extends Component {
   constructor(props) {
@@ -28,8 +27,8 @@ class User extends Component {
 
   getUrl = () => {
     const user = localStorage.getItem('userUnit')
-    console.log(localStorage.getItem('userUnit'),'ppppp');
-    
+    console.log(localStorage.getItem('userUnit'), 'ppppp');
+
     return JSON.parse(user)
   }
 
@@ -50,14 +49,14 @@ class User extends Component {
 
     return (
       <Layout>
-       <Header style={{ backgroundColor: '#79bd96', height: 100}}>
-        <img style={{height:80, width:100}} src="LOGO_White.png"></img>
-         <a href="/login" onClick={this.logout} className="logout">ออกจากระบบ</a>
+        <Header style={{ backgroundColor: '#79bd96', height: 100 }}>
+          <img style={{ height: 80, width: 100 }} src="LOGO_White.png"></img>
+          <a href="/login" onClick={this.logout} className="logout">ออกจากระบบ</a>
         </Header>
         <Layout style={{ marginTop: 3 }}>
           <Sider style={{ background: '#fff' }}>
             <div className="logo" />
-            <Menu mode="inline" >
+            <Menu mode="inline">
               <Menu.Item key="1">
                 <Icon type="user" />
                 <span>ผู้ใช้งาน</span>
@@ -70,10 +69,11 @@ class User extends Component {
               </Menu.Item>
               <Menu.Item key="3">
                 <Icon type="bar-chart" />
-                <span>สถิติการใช้งาน</span>
+                <span>สถิติ</span>
+                <Link to="/static">สถิติ</Link>
               </Menu.Item>
               <Menu.Item key="4">
-                <Icon type="bar-chart" />
+                <Icon type="export" />
                 <span>รายงาน</span>
                 <Link to="/export">รายงาน</Link>
               </Menu.Item>
@@ -92,8 +92,17 @@ class User extends Component {
                       <p>ที่อยู่ : บ้านเลขที่ 1/4 ตำบลอี่หล่ำ อำเภออุทุมพรพิสัย จังหวัดศรีสะเกษ 33120</p>
                       <p>ตำแหน่ง : เจ้าหน้าที่สาธารณสุข </p>
                       <p>จบการศึกษา : ปริญญาตรี วิทยาศาสตร์การกีฬา มหาวิทยาลัยจุฬาลงกรณ์</p>
-                      <p>สังกัด อุบลราชธานี</p>
-                      <p></p>
+                      <p>สังกัด อุบลราชธานี,ศรีสะเกษ,สุรินทร์</p>
+                      <p>เด็กชายผู้น่าสงสาร</p>
+                      <ul>
+                        <li>ยังจำได้ไหม</li>
+                        <li>สัญญาปากเปล่า</li>
+                        <li>เรื่องมีอยู่ว่า ประมาณ 6-7 ปีที่แล้ว เป็นช่วงเกณฑ์ทหารของชายไทย ก่อนเกณฑ์ทหารต้องไปบนที่นี่ นุ่นนะ คือไม่อยากเป็นทหาร ที่บ้านไม่มีคนช่วยเหลือ
+                          ประมาณก่อนเกณฑ์ทหาร ก็บนปากเปล่า ที่ศาลๆหนึ่งที่คนไม่อยากเป็นทหารไม่อยากบน ขอเรียกท่านว่าแม่ ``ศาลย่านาค`` ผมไม่อยากเป็นทหารขอให้ผมไม่ติด
+                          ผมมีครอบครัวลูกสาว 1 ทำงานปกติจนเกณฑ์ทหาร ผมไม่ติดเนื่องจากรายชื่อตกหล่น หลังจากเกณฑ์ทหารเสร็จประมาณ 1 เดือน สิ่งที่เปลี่ยนไปคือ สีหน้าของ ภรรยาเค้าเปลี่ยนไป
+                          จากที่ร่าเริงก็เปลี่ยนไป ผ่านไปซัก ระยะ ผมกลับบ้านเลยสงสัยแฟนพาลูกกลับอยุธยา โดยที่เค้าไม่บอก
+                          พอทำงานเสร็จ ไปเจอกันที่บ้าน เค้ามีคนใหม่ในช่วงไม่กี่เดือนนี้ อาจจะเป็นที่เรา  </li>
+                      </ul>
                     </Card>
                   </Col>
                   <Col span={8}>
@@ -112,12 +121,12 @@ class User extends Component {
         {/* <Footer style={{ textAlign: 'center' }}>
           Ant Design ©2018 Created by  Nectec
         </Footer> */}
-         <Footer style={{ backgroundColor: '#202020' }}>
-            <center>
-              <img style={{ height: 40, width: 100 }} src="nstda.png"></img>
-              <p style={{ fontSize: 16, color: '#fff', marginTop:10 }}>สงวนลิขสิทธิ์ ตาม พ.ร.บ.ลิขสิทธิ์ พ.ศ. 2537 โดย ศูนย์เทคโนโลยีอิเล็กทรอนิกส์และคอมพิวเตอร์แห่งชาติ</p>
-            </center>
-          </Footer>
+        <Footer style={{ backgroundColor: '#202020' }}>
+          <center>
+            <img style={{ height: 40, width: 100 }} src="nstda.png"></img>
+            <p style={{ fontSize: 16, color: '#fff', marginTop: 10 }}>สงวนลิขสิทธิ์ ตาม พ.ร.บ.ลิขสิทธิ์ พ.ศ. 2537 โดย ศูนย์เทคโนโลยีอิเล็กทรอนิกส์และคอมพิวเตอร์แห่งชาติ</p>
+          </center>
+        </Footer>
       </Layout>
     );
   }

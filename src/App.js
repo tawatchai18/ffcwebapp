@@ -28,7 +28,7 @@ class App extends Component {
           {/* <Header/> */}
           {/* <Sidebar name={this.state.appName}/> */}
           <Routes name={this.state.appName}/>
-          <hr/>
+          {/* <hr/> */}
          {/* <Footer/> */}
         </div>
       // </div>

@@ -5,7 +5,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import './Login.css';
 import { AvForm, AvGroup, AvInput, AvFeedback } from 'availity-reactstrap-validation';
-import { Button, Label, Card, CardBody, CardGroup, Col, Container, Row, CardTitle, CardText, CardHeader } from 'reactstrap';
+import { Button, Label, Card, Alert, CardGroup, Col, Container, Row, CardTitle, CardText, CardHeader } from 'reactstrap';
 
 // var chk = true;
 var temp = null;
@@ -25,8 +25,6 @@ class Login extends Component {
 
   createTable = () => {
     let table = []
-    // chk = false
-    // ใช้ !temp ได้เลย เช็คได้ทั้ง null กับ undefined
     if (!temp || temp === null) {
       Data().then((result) => {
         temp = result
@@ -47,10 +45,7 @@ class Login extends Component {
 
   handleValidSubmit() {
     if (this.state) {
-      // ดึงตัวแปรออกมาจาก state ให้ใช้ง่ายๆ
       const { id, username, password } = this.state;
-
-      // ส่งตัวแปรเข้า PostData น่าจะใช้แค่ username กับ password ปะ???
       PostData('handleValidSubmit', { username, password }, id).then((result) => {
         let responseJson = result;
         console.log(responseJson, 'wwww')

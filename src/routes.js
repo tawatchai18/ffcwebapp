@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter,  Route,  Switch} from 'react-router-dom';
 import PrivateRoute from '../src/PrivateRoute';
-// import Welcome from '././components/Welcome/Welcome';
+import Static from '././components/Static/Static';
 import Home from '././components/Home/Home';
 import Login from '././components/Login/Login';
 import Signup from '././components/Signup/Signup';
@@ -23,6 +23,7 @@ const Routes = () => (
           <Route path="/map" component={Map}/>
           <Route path="/export" component={Export}/>
           <Route path="/user" component={User}/>
+          <Route path="/static" component={Static}/>
           <Route path="*" component={NotFound}/>
       </Switch>
   </BrowserRouter>

@@ -1,60 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import './map.css';
 import 'antd/dist/antd.css';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
-import { Pie, Line } from 'react-chartjs-2';
+import { Layout, Menu, Icon } from 'antd';
+import GoogleMapReact from 'google-map-react';
+import AddressFormTypeahead from 'react-thailand-address-typeahead';
 
 const { Header, Content, Footer, Sider, } = Layout;
-const SubMenu = Menu.SubMenu;
-
-const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-    datasets: [
-        {
-            label: 'My First dataset',
-            fill: false,
-            lineTension: 0.1,
-            backgroundColor: 'rgba(75,192,192,0.4)',
-            borderColor: 'rgba(75,192,192,1)',
-            borderCapStyle: 'butt',
-            borderDash: [],
-            borderDashOffset: 0.0,
-            borderJoinStyle: 'miter',
-            pointBorderColor: 'rgba(75,192,192,1)',
-            pointBackgroundColor: '#fff',
-            pointBorderWidth: 1,
-            pointHoverRadius: 5,
-            pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-            pointHoverBorderColor: 'rgba(220,220,220,1)',
-            pointHoverBorderWidth: 2,
-            pointRadius: 1,
-            pointHitRadius: 10,
-            data: [65, 59, 80, 81, 56, 55, 40]
-        }
-    ]
-};
-
-const da = {
-    labels: [
-        'Red',
-        'Green',
-        'Yellow'
-    ],
-    datasets: [{
-        data: [300, 50, 100],
-        backgroundColor: [
-            '#FF6384',
-            '#36A2EB',
-            '#FFCE56'
-        ],
-        hoverBackgroundColor: [
-            '#FF6384',
-            '#36A2EB',
-            '#FFCE56'
-        ]
-    }]
-};
 
 class Map extends Component {
     constructor(props) {
@@ -65,7 +16,16 @@ class Map extends Component {
         };
         this.onChange = this.onChange.bind(this);
         this.logout = this.logout.bind(this);
-    }
+    };
+
+    static defaultProps = {
+        center: {
+            lat: 59.95,
+            lng: 30.33
+        },
+        zoom: 11
+    };
+
     onCollapse = (collapsed) => {
         console.log(collapsed);
         this.setState({ collapsed });
@@ -91,7 +51,7 @@ class Map extends Component {
                 <Layout style={{ marginTop: 3 }}>
                     <Sider style={{ background: '#fff' }} >
                         <div className="logo" />
-                        <Menu defaultSelectedKeys={['1']} mode="inline">
+                        <Menu mode="inline">
                             <Menu.Item key="1">
                                 <Icon type="user" />
                                 <span>ผู้ใช้งาน</span>
@@ -102,24 +62,35 @@ class Map extends Component {
                                 <span>แผนที่</span>
                                 <Link to="/map">แผนที่</Link>
                             </Menu.Item>
-                            {/* <Menu.Item key="3">
+                            <Menu.Item key="3">
                                 <Icon type="bar-chart" />
-                                <span>สถิติการใช้งาน</span>
-                            </Menu.Item> */}
+                                <span>สถิติ</span>
+                                <Link to="/static">สถิติ</Link>
+                            </Menu.Item>
                             <Menu.Item key="4">
-                                <Icon type="bar-chart" />
+                                <Icon type="export" />
                                 <span>รายงาน</span>
                                 <Link to="/export">รายงาน</Link>
                             </Menu.Item>
                         </Menu>
                     </Sider>
-                    <Content style={{ margin: '0 16px' }}>
-                        <Breadcrumb style={{ margin: '16px 0' }}>
-                        </Breadcrumb>
-                        <div style={{ padding: 24, background: '#fff', minHeight: 800 }}>
-                            <Line data={data} />
-                            <Pie data={da} />
-                        </div>
+                    <Content style={{ margin: '0 16px', height: 500 }}>
+                        {/* <div style={{ height: '100vh', width: '100%' }}>
+                            <GoogleMapReact
+                                className="container karta"
+                                bootstrapURLKeys={{
+                                    key: 'my keyI',
+                                    language: 'en',
+                                }}
+                                defaultCenter={{ lat: 59.95, lng: 30.33 }}
+                                defaultZoom={11}
+                            >
+                            </GoogleMapReact>
+                        </div> */}
+                        <AddressFormTypeahead
+                            onAddressSelected={(addressObject) => console.log(addressObject)}
+                        />
+
                     </Content>
                 </Layout>
                 <Footer style={{ backgroundColor: '#202020' }}>
